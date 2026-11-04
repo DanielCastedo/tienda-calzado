@@ -1,0 +1,18 @@
+.field { display: flex; flex-direction: column; gap: 0.35rem; }
+.field__label { font-size: 0.92rem; font-weight: 600; }
+.field__control {
+  width: 100%;
+  min-height: 42px;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: var(--color-cream);
+  color: var(--color-navy);
+  font: 500 1rem var(--font-body);
+}
+.field__control::placeholder { color: rgb(43 45 66 / 0.55); }
+.field__control:focus { outline: 2px solid var(--color-primary); outline-offset: 1px; }
+.field__control--error { border-color: var(--color-danger); box-shadow: 0 0 0 1px var(--color-danger); }
+textarea.field__control { min-height: 90px; resize: vertical; }
+select.field__control { cursor: pointer; }
+.field__error { font-size: 0.85rem; color: var(--color-danger-text); font-weight: 600; }

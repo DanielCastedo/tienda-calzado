@@ -1,0 +1,69 @@
+.product-search { position: relative; width: 100%; }
+
+/* El campo (lupa + input + X) es el componente global SearchField */
+
+/* ---------- Panel de sugerencias ---------- */
+.product-search__panel {
+  padding: 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-deep);
+  box-shadow: var(--shadow-lg);
+  animation: search-panel-in 0.16s ease-out;
+}
+.product-search--popover .product-search__panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 30;
+  width: max(100%, 360px);
+}
+.product-search--inline .product-search__panel { margin-top: 8px; }
+
+.product-search__status { margin: 0; padding: 10px 12px 6px; color: var(--color-text-muted); font-size: 0.95rem; }
+.product-search__status strong { color: #fff; }
+
+.product-search__list { margin: 0; padding: 0; list-style: none; }
+.product-search__option {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 10px 7px 7px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.12s;
+}
+.product-search__option.is-active { background: rgb(255 255 255 / 0.09); }
+.product-search__thumb {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+.product-search__thumb img { width: 100%; height: 100%; object-fit: contain; }
+.product-search__info { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+.product-search__name { overflow: hidden; color: #fff; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.product-search__name mark { background: none; color: var(--color-primary); font-weight: 800; }
+.product-search__meta { color: var(--color-text-muted); font-size: 0.85rem; }
+.product-search__out { color: var(--color-danger-text); }
+.product-search__price { color: var(--color-primary); font: 500 1.05rem var(--font-display); white-space: nowrap; }
+
+.product-search__all {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  padding: 10px 12px;
+  border-top: 1px solid var(--color-border);
+  border-radius: 0 0 10px 10px;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+@keyframes search-panel-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}

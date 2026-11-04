@@ -1,0 +1,26 @@
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+}
+.brand__mark { flex-shrink: 0; width: 54px; height: 50px; }
+.brand__text { display: flex; flex-direction: column; line-height: 1; }
+.brand__name { font: 600 44px var(--font-brand); letter-spacing: 0.02em; }
+.brand__tagline {
+  margin-top: 2px;
+  padding-left: 4px;
+  font: 500 14.5px var(--font-brand);
+  letter-spacing: 0.08em;
+}
+
+.brand--sm .brand__mark { width: 40px; height: 37px; }
+.brand--sm .brand__name { font-size: 32px; }
+.brand--sm .brand__tagline { font-size: 11px; }
+
+@media (max-width: 600px) {
+  .brand--md .brand__mark { width: 40px; height: 37px; }
+  .brand--md .brand__name { font-size: 32px; }
+  .brand--md .brand__tagline { font-size: 11px; }
+}

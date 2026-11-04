@@ -1,0 +1,17 @@
+.cta-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem 2rem;
+  padding: 2.25rem 2.5rem;
+  border-radius: var(--radius-lg);
+  background: var(--color-blob);
+}
+.cta-band__title { margin: 0; font: 400 2.2rem/1.15 var(--font-display); }
+.cta-band__text { margin: 0.35rem 0 0; color: var(--color-text-muted); font-size: 1.1rem; }
+
+@media (max-width: 600px) {
+  .cta-band { padding: 1.75rem 1.25rem; }
+  .cta-band__title { font-size: 1.8rem; }
+}

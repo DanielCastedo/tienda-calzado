@@ -1,0 +1,138 @@
+.site-header {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-top: 46px;
+}
+.site-header .brand { margin-right: auto; }
+
+/* ---------- Menú en cápsula ---------- */
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 999px;
+  background: rgb(0 0 0 / 0.14);
+  backdrop-filter: blur(6px);
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 999px;
+  color: rgb(255 255 255 / 0.85);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s, color 0.2s;
+}
+.nav-link:hover { background: rgb(255 255 255 / 0.08); color: #fff; }
+.nav-link:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.nav-link.is-active {
+  background: var(--color-primary);
+  color: var(--color-navy);
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgb(249 148 59 / 0.35);
+}
+
+.nav-link__badge {
+  display: grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 99px;
+  background: var(--color-primary);
+  color: var(--color-navy);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+.nav-link.is-active .nav-link__badge { background: var(--color-navy); color: var(--color-primary); }
+
+/* ---------- Buscador ---------- */
+.site-header__search { width: 250px; flex-shrink: 0; }
+
+/* ---------- Hamburguesa ---------- */
+.burger {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 6px;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0 9px;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  border-radius: 50%;
+  background: rgb(0 0 0 / 0.14);
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+.burger:hover { border-color: var(--color-primary); }
+.burger:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.burger span {
+  display: block;
+  height: 2.5px;
+  border-radius: 2px;
+  background: #fff;
+  transition: transform 0.25s, width 0.25s;
+}
+.burger span:first-child { width: 16px; }
+.burger span:last-child { width: 24px; }
+.burger.is-open span:first-child { width: 24px; transform: translateY(4.25px) rotate(45deg); }
+.burger.is-open span:last-child { transform: translateY(-4.25px) rotate(-45deg); }
+
+/* ---------- Menú desplegable ---------- */
+.site-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: var(--gutter-right);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(320px, calc(100vw - 32px));
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-deep);
+  box-shadow: var(--shadow-lg);
+  animation: menu-in 0.2s ease-out;
+}
+.site-menu__nav { display: flex; flex-direction: column; gap: 2px; }
+.site-menu .nav-link { height: 42px; border-radius: 10px; }
+@keyframes menu-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* El buscador del menú solo hace falta cuando el del header está oculto */
+.site-menu__search { display: none; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1180px) {
+  .site-header { gap: 12px; }
+  .nav-link { padding: 0 12px; }
+  .site-header__search { width: 210px; }
+}
+@media (max-width: 960px) {
+  .site-header__nav { display: none; }
+  .site-header__search { width: 260px; }
+}
+@media (max-width: 700px) {
+  .site-header__search { display: none; }
+  .site-menu__search { display: block; }
+}
+@media (max-width: 600px) {
+  .site-header { padding-top: 24px; }
+}

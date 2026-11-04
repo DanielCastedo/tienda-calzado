@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Tema Calzados Andino
+   ========================================================================== */
+:root {
+  /* Paleta (tomada de la maqueta) */
+  --color-bg: #6d360a;          /* fondo principal (café) */
+  --color-bg-deep: #5a2c07;     /* footer, menús desplegables */
+  --color-blob: #6c4a3b;        /* manchas decorativas */
+  --color-brown: #6d360a;       /* acentos café sobre fondos claros */
+  --color-surface: #5e2e08;     /* tarjetas */
+  --color-surface-2: #7a4318;
+  --color-text: #ffffff;
+  --color-text-muted: rgb(255 255 255 / 0.78);
+  --color-border: rgb(255 255 255 / 0.14);
+  --color-primary: #f9943b;
+  --color-primary-hover: #ffa654;
+  --color-primary-soft: rgb(249 148 59 / 0.16);
+  --color-on-primary: #2b2d42;
+  --color-navy: #2b2d42;
+  --color-dot: #d9d9d9;
+  --color-cream: #fdeeee;
+  /* Alertas (agotado, errores): verde de la marca.
+     --color-danger para fondos/bordes, --color-danger-text para texto sobre fondo café. */
+  --color-danger: #027147;
+  --color-danger-text: #6fe0b0;
+  --color-danger-soft: rgb(2 113 71 / 0.28);
+  --color-success: var(--color-primary);
+
+  /* Tipografía */
+  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-body: 'Baloo 2', system-ui, sans-serif;
+  --font-brand: 'Quicksand', var(--font-body);
+  --font-strong: 'Lato', var(--font-body);
+
+  /* Forma */
+  --radius: 6px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 2px 6px rgb(0 0 0 / 0.18);
+  --shadow-lg: 0 18px 40px rgb(0 0 0 / 0.35);
+
+  /* Márgenes laterales de página (mismos que la maqueta) */
+  --gutter-left: 46px;
+  --gutter-right: 80px;
+  --content-x: 79px;
+
+  font-family: var(--font-body);
+  line-height: 1.5;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--color-primary); }
+
+code {
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  background: rgb(0 0 0 / 0.2);
+  font-size: 0.9em;
+}
+
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--gutter-left) var(--gutter-right);
+}
+
+/* Contenido interior de las páginas (alineado con el texto del hero) */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 3.5rem 0 5rem var(--content-x);
+}
+
+.text-highlight { color: var(--color-primary); }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 1180px) {
+  :root { --gutter-left: 32px; --gutter-right: 48px; --content-x: 40px; }
+}
+@media (max-width: 960px) {
+  :root { --gutter-left: 24px; --gutter-right: 24px; --content-x: 0px; }
+  .page { gap: 3rem; padding-top: 2.5rem; }
+}
+@media (max-width: 600px) {
+  :root { --gutter-left: 16px; --gutter-right: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

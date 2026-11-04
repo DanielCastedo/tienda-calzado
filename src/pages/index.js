@@ -1,0 +1,6 @@
+export { LandingPage } from './LandingPage'
+export { AboutPage } from './AboutPage'
+export { ProductsPage } from './ProductsPage'
+export { OrdersPage } from './OrdersPage'
+export { LoginPage } from './LoginPage'
+export { NotFoundPage } from './NotFoundPage'
