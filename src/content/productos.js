@@ -1,6 +1,9 @@
 /* ============================================================================
    PÁGINA PRODUCTOS + CATÁLOGO
-   ⚠️ Los productos y precios son de EJEMPLO: reemplázalos por tu catálogo real.
+   Los textos de la página se editan aquí.
+   ℹ️ Los productos de abajo son solo los DATOS INICIALES de la demo. El catálogo
+      real se administra en el panel: /admin/productos (y se refleja en la tienda).
+   ⚠️ Los productos y precios son de EJEMPLO.
 
    Cada producto tiene:
      id              -> número único (no repetir)

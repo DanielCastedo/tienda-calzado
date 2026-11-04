@@ -1,39 +1,39 @@
-import { categorias, productos } from '@/content'
 import { httpClient } from '@/services'
+import { erp } from '@/services/erp'
 import { delay } from '@/utils'
 
 /**
- * Mientras no exista backend, el catálogo sale de src/content/productos.js.
- * Para usar la API real cambia USE_MOCK a false.
+ * Catálogo de la tienda online.
+ * Mientras no exista backend, sale del ERP simulado: los productos que se
+ * registran o desactivan en el panel (/admin/productos) se reflejan aquí.
  */
 const USE_MOCK = true
 
-/** Convierte el formato editable (en español) al modelo interno de la app. */
-const toProduct = (p) => ({
-  id: p.id,
-  name: p.nombre,
-  brand: p.marca,
-  category: p.categoria,
-  price: p.precio,
-  wholesalePrice: p.precioMayorista ?? p.precio,
-  sizes: p.tallas ?? [],
-  stock: p.stock ?? 0,
-  image: p.imagen,
-  description: p.descripcion ?? '',
-})
-
-const toCategory = (c) => ({ id: c.id, name: c.nombre })
-
 export const productsApi = {
   async getCatalog() {
-    if (USE_MOCK) {
-      await delay(250)
-      return { products: productos.map(toProduct), categories: categorias.map(toCategory) }
+    if (!USE_MOCK) {
+      const [products, categories] = await Promise.all([httpClient.get('/products'), httpClient.get('/categories')])
+      return { products, categories }
     }
-    const [products, categories] = await Promise.all([
-      httpClient.get('/products'),
-      httpClient.get('/categories'),
-    ])
+    await delay(150)
+    const state = erp.getState()
+    const stockOf = (id) => state.stock.filter((s) => s.productId === id).reduce((sum, s) => sum + s.qty, 0)
+    const products = state.products
+      .filter((p) => p.active)
+      .map((p) => ({
+        id: p.id,
+        name: p.name,
+        brand: p.brand,
+        category: String(p.categoryId),
+        price: p.price,
+        wholesalePrice: p.wholesalePrice,
+        sizes: p.sizes,
+        stock: stockOf(p.id),
+        image: p.image,
+        description: p.description ?? '',
+      }))
+    const used = new Set(products.map((p) => p.category))
+    const categories = state.categories.filter((c) => used.has(String(c.id))).map((c) => ({ id: String(c.id), name: c.name }))
     return { products, categories }
   },
 }

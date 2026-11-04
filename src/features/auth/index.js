@@ -1,4 +1,5 @@
 // API pública de la feature "auth".
-export { LoginCard } from './components/LoginCard'
-export { useLogin } from './hooks/useLogin'
+export { AuthProvider } from './components/AuthProvider'
+export { LoginView } from './components/LoginView'
+export { useAuth } from './hooks/authContext'
 export { authApi } from './services/authApi'

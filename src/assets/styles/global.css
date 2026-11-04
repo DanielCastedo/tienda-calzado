@@ -12,6 +12,12 @@
   --color-text: #ffffff;
   --color-text-muted: rgb(255 255 255 / 0.78);
   --color-border: rgb(255 255 255 / 0.14);
+  --color-border-strong: rgb(255 255 255 / 0.6);
+  --color-accent-text: var(--color-primary);
+  --color-success-soft: rgb(2 113 71 / 0.25);
+  --color-success-text: #6fe0b0;
+  --color-warning-soft: rgb(249 210 122 / 0.2);
+  --color-warning-text: #f9d27a;
   --color-primary: #f9943b;
   --color-primary-hover: #ffa654;
   --color-primary-soft: rgb(249 148 59 / 0.16);
@@ -46,6 +52,54 @@
   font-family: var(--font-body);
   line-height: 1.5;
   color-scheme: dark;
+}
+
+/* Tema claro del panel administrativo y del login.
+   Reutiliza los mismos componentes: solo cambian los tokens. */
+.theme-light {
+  --color-bg: #f5efe8;
+  --color-surface: #ffffff;
+  --color-surface-2: #faf5ef;
+  --color-text: #2b2118;
+  --color-text-muted: #6f6257;
+  --color-border: #e9dfd4;
+  --color-border-strong: #c9b8a6;
+  --color-primary-soft: #fdebd9;
+  --color-accent-text: #a8530a;
+  --color-row-hover: #fcf7f1;
+  --color-cream: #ffffff;
+  --color-input-bg: #ffffff;
+  --color-input-border: #d8c9ba;
+  --color-danger: #c62828;
+  --color-danger-text: #b3261e;
+  --color-danger-soft: #fdecea;
+  --color-success: #027147;
+  --color-success-text: #027147;
+  --color-success-soft: #e2f3eb;
+  --color-warning-soft: #fff3d1;
+  --color-warning-text: #8a5a00;
+  --badge-neutral-bg: #efe6dc;
+  --badge-neutral-fg: #4a3b2f;
+  --badge-success-bg: #e2f3eb;
+  --badge-success-fg: #027147;
+  --badge-warning-bg: #fff1c7;
+  --badge-warning-fg: #7a4f00;
+  --badge-danger-bg: #fdecea;
+  --badge-danger-fg: #b3261e;
+  --badge-info-bg: #e6effa;
+  --badge-info-fg: #1f4f8a;
+  --shadow-sm: 0 1px 3px rgb(60 30 5 / 0.08);
+  --shadow-lg: 0 18px 40px rgb(60 30 5 / 0.18);
+  color: var(--color-text);
+  color-scheme: light;
+}
+.theme-light .field__control { border-color: var(--color-input-border); }
+.theme-light .field__control:disabled { background: var(--color-surface-2); color: var(--color-text-muted); }
+
+/* Impresión / "Guardar como PDF": solo el contenido */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff !important; }
 }
 
 *,
